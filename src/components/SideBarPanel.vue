@@ -10,19 +10,13 @@
     <div class="side-bar-panel__assActions">
       Assigned actions
       <div class="side-bar-panel__assActions__sub-head">The selected actions will run in the background when the user journey gets to this element</div>
-      <button>
+      <button @click="actionChange()">
         Add actions
         <font-awesome-icon icon="plus" class="side-bar-panel__header__plus" />
       </button>
     </div>
     
     <div class="side-bar-panel__action-area">
-      <!-- <b-input-group class="mt-3">
-        <template #prepend>
-          <b-input-group-text><strong class="text-danger">!</strong></b-input-group-text>
-        </template>
-        <b-form-input></b-form-input>
-      </b-input-group> -->
       <div class="side-bar-panel__action-area__input-container">
         <i class="fa fa-search"></i>
         <input type="text" placeholder="Username">
@@ -42,12 +36,34 @@ import ActionButton from './common/ActionButton.vue';
   },
 })
 export default class SideBarPanel extends Vue {
+  get isAction(){
+    return this.$store.state.search.isAction
+  }
+  actionChange(){
+    // this.$store.commit('/search/')
+  }
   actionButtonList = [
     {
-      iconName : 'hey',
+      iconName : 'tag',
       text : 'Tag customer',
       checkboxValue : false,
-    }
+    },{
+      iconName : 'tag',
+      text : 'Tag order',
+      checkboxValue : false,
+    },{
+      iconName : 'hey',
+      text : 'Send email notification',
+      checkboxValue : false,
+    },{
+      iconName : 'hey',
+      text : 'Select digital product',
+      checkboxValue : false,
+    },{
+      iconName : 'hey',
+      text : 'Make HTTPS request',
+      checkboxValue : false,
+    },
   ]
 }
 </script>

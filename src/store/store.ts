@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import result from "@/store/result";
+import search from "@/store/search";
 
 Vue.use(Vuex)
 const store = new Vuex.Store({
   modules: {
-    result,
+    search,
   }
 })
 

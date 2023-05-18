@@ -2,16 +2,16 @@ import {ActionTree, GetterTree, MutationTree} from "vuex";
 import {sample} from "@/api/result";
 
 interface State {
-  sample:string
+  isAction:boolean,
 }
 
 const state: State = {
-  sample:''
+  isAction:false,
 }
 
 const mutations = <MutationTree<State>>{
-  sample(state,payload:string){
-    state.sample=payload
+  setIsAction(state,payload:boolean){
+    state.isAction=payload
   }
 };
 
@@ -23,7 +23,7 @@ export const actions = <ActionTree<State, any>>{
 
 const getters = <GetterTree<State, any>>{
   getSample(state, getters) {
-    return state.sample
+    return state.isAction
   },
 }
 

@@ -2,7 +2,8 @@
   <div class="action-button">
     <div class="action-button__button-bar">
         <div class="action-button__icon-text">
-            {{buttonData.text}}
+          <font-awesome-icon :icon="buttonData.iconName" />
+          {{buttonData.text}}
         </div>
         <b-form-checkbox v-model="buttonData.checkboxValue"></b-form-checkbox>
     </div>
