@@ -1,12 +1,14 @@
 <template>
   <div class="side-bar-panel">
     <div class="side-bar-panel__header">
+      <i class="fa fa-bolt"></i>
       Action
     </div>
     <div class="side-bar-panel__assActions">
       Assigned actions
       <div class="side-bar-panel__assActions__sub-head">The selected actions will run in the background when the user journey gets to this element</div>
-      <button>Add actions</button>
+      <button>
+        Add actions</button>
     </div>
     
     <div class="side-bar-panel__action-area">

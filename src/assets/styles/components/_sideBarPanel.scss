@@ -4,6 +4,11 @@
     &__header{
         padding: 22px;
         border-bottom: 1px solid $grey;
+        color: $yellow;
+        font:$title;
+        i{
+            margin-right: 10px;
+        }
     }
     &__assActions{
         color: $head-dGrey;
