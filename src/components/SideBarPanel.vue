@@ -16,8 +16,8 @@
         </template>
         <b-form-input></b-form-input>
       </b-input-group> -->
-      <div class="input-container">
-        <i class="fa fa-user"></i>
+      <div class="side-bar-panel__action-area__input-container">
+        <i class="fa fa-search"></i>
         <input type="text" placeholder="Username">
       </div>
       <action-button :buttonData="actionButtonList[0]"></action-button>

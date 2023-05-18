@@ -3,12 +3,11 @@ import App from './App.vue'
 import store from "@/store/store";
 import router from "@/routes";
 import BootstrapVue, {IconsPlugin} from "bootstrap-vue";
+import '@fortawesome/fontawesome-free/css/all.css';
 
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
-
-// const storedEmail = sessionStorage.getItem('userSession')
 
 new Vue({
   store,
