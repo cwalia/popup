@@ -1,14 +1,19 @@
 <template>
   <div class="side-bar-panel">
     <div class="side-bar-panel__header">
-      <i class="fa fa-bolt"></i>
-      Action
+      <div>
+        <font-awesome-icon icon="bolt" class="side-bar-panel__header__bolt"/>
+        Action
+      </div>
+      <font-awesome-icon icon="ellipsis" class="side-bar-panel__header__ellipsis" />
     </div>
     <div class="side-bar-panel__assActions">
       Assigned actions
       <div class="side-bar-panel__assActions__sub-head">The selected actions will run in the background when the user journey gets to this element</div>
       <button>
-        Add actions</button>
+        Add actions
+        <font-awesome-icon icon="plus" class="side-bar-panel__header__plus" />
+      </button>
     </div>
     
     <div class="side-bar-panel__action-area">
@@ -22,6 +27,7 @@
         <i class="fa fa-search"></i>
         <input type="text" placeholder="Username">
       </div>
+
       <action-button :buttonData="actionButtonList[0]"></action-button>
     </div>
   </div>

@@ -5,7 +5,11 @@
     background-color: $white;
     box-shadow: 0px 14px 60px 0px rgba(0, 0, 0, 0.09);
 }
-
+@mixin flex-center{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
 @mixin outlineButton{
     border: 1px solid $action-cta-border;
     color: $action-cta;
@@ -14,6 +18,7 @@
     border-radius: 15px;
     width: 100%;
     padding: 20px;
+    @include flex-center();
     &:hover{
         background-color: $action-cta-hover;
     }

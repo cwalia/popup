@@ -5,9 +5,13 @@
         padding: 22px;
         border-bottom: 1px solid $grey;
         color: $yellow;
+        @include flex-center();
         font:$title;
-        i{
+        &__bolt{
             margin-right: 10px;
+        }
+        &__ellipsis{
+            color: $grey-border;
         }
     }
     &__assActions{
