@@ -3,7 +3,8 @@
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
 
 @import "variables";
-
+@import "mixins";
+@import "./components/index.scss";
 body{
   width:100%;
   overflow: auto; 
@@ -12,4 +13,9 @@ body{
 #app {
   height: 100vh;
   box-sizing: border-box;
+  background-color: $grey;
+}
+
+.mainApp{
+  display: flex;
 }

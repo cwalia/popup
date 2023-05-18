@@ -1,0 +1,26 @@
+.action-panel {
+  width: 70%;
+  @include mainAppBoxes();
+  margin-left: 0px;
+
+  &__inner {
+    margin: 5px;
+    border-radius: 5px;
+    height: calc(100% - 10px);
+    background-color: $grey-inner;
+    border: 1px dashed $grey-border;
+  }
+
+  &__centered-text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 100%;
+    font-family: Poppins;
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 41px;
+    color: $ap-text;
+  }
+}
