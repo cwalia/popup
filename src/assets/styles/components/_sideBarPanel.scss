@@ -1,4 +1,41 @@
 .side-bar-panel{
     width: 30%;
-    @include mainAppBoxes()
+    @include mainAppBoxes();
+    &__header{
+        padding: 22px;
+        border-bottom: 1px solid $grey;
+    }
+    &__assActions{
+        color: $head-dGrey;
+        padding: 22px;
+        font: $title;
+        &__sub-head{
+            color: $sub-head-lGrey;
+            font: $text;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        button{
+            @include outlineButton();
+        }
+    }
+    &__action-area{
+        padding: 22px;
+        .input-group-prepend, .input-group-text{
+            background-color: transparent;
+            border-right: none;
+            &:focus{
+                box-shadow: none;
+                border-color: $action-cta;
+            }
+        }
+        .form-control{
+            border-radius: 10px;
+            border-left: none;
+            &:focus{
+                border-color: $action-cta;
+                box-shadow: none;
+            }
+        }
+    }
 }

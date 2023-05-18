@@ -5,6 +5,7 @@
 @import "variables";
 @import "mixins";
 @import "./components/index.scss";
+@import "./common/index.scss";
 body{
   width:100%;
   overflow: auto; 
