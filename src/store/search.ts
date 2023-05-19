@@ -12,7 +12,7 @@ interface State {
 const state: State = {
   isState:'action',
   actionSelectedList:[],
-  confirmedActions:['Tag customer','Tag order'],
+  confirmedActions:['Tag customer','Make HTTPS request'],
   selectedAction:'',
   userTagsList:[]
 }

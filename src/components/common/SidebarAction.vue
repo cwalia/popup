@@ -1,11 +1,17 @@
 <template>
   <div>
-    <div class="side-bar-panel__addActions" @click="stateChange('action')">
-      <div>
+    <div class="side-bar-panel__addActions">
+      <div @click="stateChange('action')">
         <font-awesome-icon icon="chevron-left" class="side-bar-panel__addActions__chevron-left" />
         {{isState}}
       </div>
-      <font-awesome-icon icon="ellipsis" class="side-bar-panel__header__ellipsis" />
+      <font-awesome-icon icon="ellipsis" class="side-bar-panel__header__ellipsis" id="activeDelete" />
+      <b-popover target="activeDelete" triggers="hover click" placement="bottom">
+        <div v-for="item in actionList" :key="item.text" class="side-bar-panel__addActions__popover" :style="{'color':item.iconName=='trash'?'#FF2D55':'#475461'}">
+          <font-awesome-icon :icon="item.iconName"  />
+          {{item.text}}
+        </div>
+      </b-popover>
     </div>
     <div class="side-bar-panel__action-area">
       <div class="side-bar-panel__input-container side-bar-panel__input-action">
@@ -32,6 +38,10 @@ import {Component, Vue, Prop} from 'vue-property-decorator';
 })
 export default class SidebarAction extends Vue {
   userTags = ''
+  actionList = [
+    {iconName:'toggle-off',text:'Make inactive'},
+    {iconName:'trash',text:'Delete action'},
+  ]
   get isState(){
     return this.$store.state.search.isState
   }

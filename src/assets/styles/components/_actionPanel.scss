@@ -24,4 +24,26 @@
     line-height: 41px;
     color: $ap-text;
   }
+
+  &__tag-customer{
+    border: 1px solid $action-cta;
+    border-radius: 15px;
+    background-color: $white;
+    hr{
+      margin-top: 0px !important;
+    }
+    &__head{
+      padding: 20px;
+    }
+    &__tags-list{
+      margin: 20px;
+      border: 1px solid $action-cta-border;
+      border-radius: 15px;
+      padding: 10px;
+      .svg-inline--fa {
+        margin-right: 5px;
+      }
+    }
+  }
 }
+
