@@ -11,10 +11,16 @@
       <div class="side-bar-panel__assActions">
         Assigned actions
         <div class="side-bar-panel__assActions__sub-head">The selected actions will run in the background when the user journey gets to this element</div>
-        <button @click="actionChange(true)">
-          Add actions
-          <font-awesome-icon icon="plus" class="side-bar-panel__header__plus" />
-        </button>
+        <div class="side-bar-panel__add-actions">
+          <button v-for="item in fetchConfirmedActions" :key="item.iconName" class="side-bar-panel__assActions__sel-buttons">
+            <font-awesome-icon :icon="item.iconName"/>
+            {{item.text}}
+          </button>
+          <button @click="actionChange(true)" class="side-bar-panel__assActions__action-button">
+            Add actions
+            <font-awesome-icon icon="plus" class="side-bar-panel__header__plus" />
+          </button>
+        </div>
       </div>
     </div>
     
@@ -101,7 +107,6 @@ export default class SideBarPanel extends Vue {
     this.$store.commit('search/setConfirmedActions',this.actionSelectedList)
   }
   get fetchConfirmedActions() {
-    console.log()
     return this.actionButtonList.filter((item:any) => {
       return this.confirmedActions.includes(item.text);
     });

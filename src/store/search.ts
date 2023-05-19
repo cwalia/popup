@@ -10,7 +10,7 @@ interface State {
 const state: State = {
   isAction:false,
   actionSelectedList:[],
-  confirmedActions:['Tag customer']
+  confirmedActions:['Tag customer','Tag order']
 }
 
 const mutations = <MutationTree<State>>{

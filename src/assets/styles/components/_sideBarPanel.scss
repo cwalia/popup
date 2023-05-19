@@ -35,8 +35,32 @@
             margin-bottom: 25px;
             font-weight: 300;
         }
-        button{
-            @include outlineButton();
+        &__action-button{
+            border: none;
+            color: $action-cta;
+            font: $title;
+            background-color: transparent;
+            width: 100%;
+            padding: 20px;
+            @include flex-center();
+            &:hover{
+                background-color: $action-cta-hover;
+            }
+        }
+        &__sel-buttons{
+            border: none;
+            color: $head-dGrey;
+            width: 100%;
+            padding: 20px;
+            background-color: transparent;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0em;
+            border-bottom: 1px solid $action-cta-border;
+            &:hover{
+                background-color: $action-cta-hover;
+            }
         }
     }
     &__action-area{
@@ -68,8 +92,6 @@
     }
     &__light-heading{
         color: $sub-head-lGrey;
-        font-family: Inter;
-
         font-size: 0.9em;
         font-weight: 300;
         margin: 15px 0px;
@@ -85,5 +107,9 @@
             width: 150px;
             border-radius: 14px;
         }
+    }
+    &__add-actions{
+        border-radius: 15px;
+        border: 1px solid $action-cta-border;
     }
 }
