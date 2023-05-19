@@ -22,7 +22,7 @@
         <input type="text" placeholder="Username">
       </div>
 
-      <action-button :buttonData="actionButtonList[0]"></action-button>
+      <action-button v-for="item in actionButtonList" :key="item.iconName" :buttonData="item"></action-button>
     </div>
   </div>
 </template>
@@ -44,7 +44,7 @@ export default class SideBarPanel extends Vue {
   }
   actionButtonList = [
     {
-      iconName : 'tag',
+      iconName : 'user-tag',
       text : 'Tag customer',
       checkboxValue : false,
     },{
@@ -52,15 +52,15 @@ export default class SideBarPanel extends Vue {
       text : 'Tag order',
       checkboxValue : false,
     },{
-      iconName : 'hey',
+      iconName : 'envelope',
       text : 'Send email notification',
       checkboxValue : false,
     },{
-      iconName : 'hey',
+      iconName : 'clipboard-list',
       text : 'Select digital product',
       checkboxValue : false,
     },{
-      iconName : 'hey',
+      iconName : 'shield',
       text : 'Make HTTPS request',
       checkboxValue : false,
     },
