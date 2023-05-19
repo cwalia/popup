@@ -2,20 +2,24 @@ import {ActionTree, GetterTree, MutationTree} from "vuex";
 import {sample} from "@/api/result";
 
 interface State {
-  isAction:boolean,
+  isState:string,
   actionSelectedList:[],
-  confirmedActions:string[]
+  confirmedActions:string[],
+  selectedAction:string,
+  userTagsList:[]
 }
 
 const state: State = {
-  isAction:false,
+  isState:'action',
   actionSelectedList:[],
-  confirmedActions:['Tag customer','Tag order']
+  confirmedActions:['Tag customer','Tag order'],
+  selectedAction:'',
+  userTagsList:[]
 }
 
 const mutations = <MutationTree<State>>{
-  setIsAction(state,payload:boolean){
-    state.isAction=payload
+  setIsState(state,payload:string){
+    state.isState=payload
   },
   setActionSelectedList(state,payload:[]){
     state.actionSelectedList=payload
@@ -23,6 +27,9 @@ const mutations = <MutationTree<State>>{
   setConfirmedActions(state,payload:[]){
     state.confirmedActions=payload
   },
+  setSelectedAction(state,payload:string){
+    state.selectedAction=payload
+  }
 };
 
 export const actions = <ActionTree<State, any>>{
@@ -33,11 +40,11 @@ export const actions = <ActionTree<State, any>>{
 
 const getters = <GetterTree<State, any>>{
   getSample(state, getters) {
-    return state.isAction
+    return state.isState
   },
 }
 
-const result = {
+const search = {
   namespaced: true,
   state,
   mutations,
@@ -45,4 +52,4 @@ const result = {
   getters,
 };
 
-export default result;
+export default search;

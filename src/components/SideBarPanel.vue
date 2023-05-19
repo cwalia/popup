@@ -1,6 +1,6 @@
 <template>
   <div class="side-bar-panel">
-    <div v-if="!isAction">
+    <div v-if="isState == 'action'">
       <div class="side-bar-panel__header">
         <div>
           <font-awesome-icon icon="bolt" class="side-bar-panel__header__bolt"/>
@@ -12,11 +12,11 @@
         Assigned actions
         <div class="side-bar-panel__assActions__sub-head">The selected actions will run in the background when the user journey gets to this element</div>
         <div class="side-bar-panel__add-actions">
-          <button v-for="item in fetchConfirmedActions" :key="item.iconName" class="side-bar-panel__assActions__sel-buttons">
+          <button v-for="item in fetchConfirmedActions" :key="item.iconName" class="side-bar-panel__assActions__sel-buttons" @click="stateChange(item.text)">
             <font-awesome-icon :icon="item.iconName"/>
             {{item.text}}
           </button>
-          <button @click="actionChange(true)" class="side-bar-panel__assActions__action-button">
+          <button @click="stateChange('add-actions')" class="side-bar-panel__assActions__action-button">
             Add actions
             <font-awesome-icon icon="plus" class="side-bar-panel__header__plus" />
           </button>
@@ -24,13 +24,15 @@
       </div>
     </div>
     
-    <div v-else>
-      <div class="side-bar-panel__addActions" @click="actionChange(false)">
-        <font-awesome-icon icon="chevron-left" class="side-bar-panel__addActions__chevron-left" />
-        Add actions
+    <div v-else-if="isState == 'add-actions'">
+      <div class="side-bar-panel__addActions" @click="stateChange('action')">
+        <div>
+          <font-awesome-icon icon="chevron-left" class="side-bar-panel__addActions__chevron-left" />
+          Add actions
+        </div>
       </div>
       <div class="side-bar-panel__action-area">
-        <div class="side-bar-panel__action-area__input-container">
+        <div class="side-bar-panel__input-container">
           <i class="fa fa-search"></i>
           <input type="text" placeholder="Search actions..." v-model="searchQuery">
         </div>
@@ -45,24 +47,29 @@
         <b-button variant="primary" @click="confirmSelection()">Confirm</b-button>
       </div>
     </div>
+
+    <div v-else>
+      <sidebar-action></sidebar-action>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import {Component, Vue, Prop} from 'vue-property-decorator';
 import ActionButton from './common/ActionButton.vue';
+import SidebarAction from './common/SidebarAction.vue'
 @Component({
   components: {
-    ActionButton
+    ActionButton,SidebarAction
   },
 })
 export default class SideBarPanel extends Vue {
   searchQuery = ''
-  get isAction(){
-    return this.$store.state.search.isAction
+  get isState(){
+    return this.$store.state.search.isState
   }
-  actionChange(param:boolean){
-    this.$store.commit('search/setIsAction',param)
+  stateChange(param:string){
+    this.$store.commit('search/setIsState',param)
   }
   actionButtonList = [
     {

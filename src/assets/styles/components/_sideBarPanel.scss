@@ -19,6 +19,7 @@
         padding: 22px;
         border-bottom: 1px solid $grey;
         color: $head-dGrey;
+        @include flex-center();
         cursor: pointer;
         font: $title;
         &__chevron-left{
@@ -44,7 +45,7 @@
             padding: 20px;
             @include flex-center();
             &:hover{
-                background-color: $action-cta-hover;
+                background-color: $action-cta-border;
             }
         }
         &__sel-buttons{
@@ -59,35 +60,60 @@
             letter-spacing: 0em;
             border-bottom: 1px solid $action-cta-border;
             &:hover{
-                background-color: $action-cta-hover;
+                background-color: $action-cta-border;
             }
         }
     }
     &__action-area{
         padding: 22px;
-        &__input-container {
-            position: relative;
-            margin-bottom: 20px;
-            color: $sub-head-lGrey;
-            i {
-                position: absolute;
-                left: 15px;
-                top: 50%;
-                transform: translateY(-50%);
-            }
+    }
+    &__input-container {
+        position: relative;
+        margin-bottom: 20px;
+        color: $sub-head-lGrey;
+        i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    
+    input[type="text"] {
+        border-radius: 14px;
+        padding: 15px 0px 15px 45px;
+        border: 1px solid #E3E5E8;
+        width: 100%;
+        color: $head-dGrey;
+        font-weight: 400;
+        &:focus-visible{
+            outline: $action-cta solid 1px;
         }
         
+    }
+    &__input-action{
         input[type="text"] {
             border-radius: 14px;
-            padding: 15px 0px 15px 45px;
-            border: 1px solid #E3E5E8;
-            width: 100%;
+            padding: 10px 0px 10px 45px;
+        }
+    }
+    &__action-area{
+        padding: 20px
+    }
+    &__tags-list{
+        @include flex-center();
+        background-color: $grey-inner;
+        border-radius: 15px;
+        padding: 10px;
+        margin-bottom: 10px;
+        span{
+            background-color: red;
+            width: 50px;
+            border-radius: 50%;
+        }
+        &__trash{
             color: $head-dGrey;
-            font-weight: 400;
-            &:focus-visible{
-                outline: $action-cta solid 1px;
-            }
-            
+            cursor: pointer;
         }
     }
     &__light-heading{

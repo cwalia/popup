@@ -20,6 +20,6 @@
     padding: 20px;
     @include flex-center();
     &:hover{
-        background-color: $action-cta-hover;
+        background-color: $action-cta-border;
     }
 }
