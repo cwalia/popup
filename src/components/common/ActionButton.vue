@@ -5,7 +5,7 @@
           <font-awesome-icon :icon="buttonData.iconName" />
           {{buttonData.text}}
         </div>
-        <b-form-checkbox v-model="buttonData.checkboxValue"></b-form-checkbox>
+        <b-form-checkbox v-model="actionSelectedList" :value="buttonData.text" :name="buttonData.text"></b-form-checkbox>
     </div>
   </div>
 </template>
@@ -18,7 +18,13 @@ import {Component, Vue, Prop} from 'vue-property-decorator';
   },
 })
 export default class ActionButton extends Vue {
-    @Prop() private buttonData!: any;
-
+  @Prop() private buttonData!: any;
+  get actionSelectedList(){
+    return this.$store.state.search.actionSelectedList
+  }
+  set actionSelectedList(v){
+    console.log(v)
+    this.$store.commit('search/setActionSelectedList',v)
+  }
 }
 </script>

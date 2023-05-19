@@ -1,6 +1,7 @@
 .side-bar-panel{
     width: 30%;
     @include mainAppBoxes();
+    position: relative;
     &__header{
         padding: 22px;
         border-bottom: 1px solid $grey;
@@ -11,7 +12,17 @@
             margin-right: 10px;
         }
         &__ellipsis{
-            color: $grey-border;
+            color: $sub-head-lGrey;
+        }
+    }
+    &__addActions{
+        padding: 22px;
+        border-bottom: 1px solid $grey;
+        color: $head-dGrey;
+        cursor: pointer;
+        font: $title;
+        &__chevron-left{
+            margin-right: 10px;
         }
     }
     &__assActions{
@@ -32,12 +43,14 @@
         padding: 22px;
         &__input-container {
             position: relative;
-        }
-        &__input-container i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
+            margin-bottom: 20px;
+            color: $sub-head-lGrey;
+            i {
+                position: absolute;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
         }
         
         input[type="text"] {
@@ -45,9 +58,32 @@
             padding: 15px 0px 15px 45px;
             border: 1px solid #E3E5E8;
             width: 100%;
+            color: $head-dGrey;
+            font-weight: 400;
             &:focus-visible{
                 outline: $action-cta solid 1px;
             }
+            
+        }
+    }
+    &__light-heading{
+        color: $sub-head-lGrey;
+        font-family: Inter;
+
+        font-size: 0.9em;
+        font-weight: 300;
+        margin: 15px 0px;
+    }
+    &__bottom-buttoms{
+        position: absolute;
+        margin: 10px;
+        bottom: 0px;
+        width: 95%;
+        @include flex-center();
+        .btn{
+            font-weight: 600;
+            width: 150px;
+            border-radius: 14px;
         }
     }
 }
