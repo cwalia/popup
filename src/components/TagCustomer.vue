@@ -1,10 +1,10 @@
 <template>
-  <div class="action-panel__tag-customer">
+  <div class="action-panel__tag-customer" :style="{'border':isState!='Tag customer' ? '1px solid #E3E5E8' : '1px solid #0052FF'}">
     <div class="action-panel__tag-customer__head">
       <font-awesome-icon icon="user-tag" class="side-bar-panel__addActions__chevron-left"/>
-      {{isState}}
+      Tag customer
     </div>
-    <hr v-if="userTagsList.length">
+    <hr v-if="['Tag customer','action','add-actions'].includes(isState) && userTagsList.length">
     <div v-for="(item,index) in userTagsList" :key="index" class="action-panel__tag-customer__tags-list">
       <font-awesome-icon icon="circle" :style="{'color':item.color}"/>
         {{item.text}}

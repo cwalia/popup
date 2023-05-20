@@ -34,7 +34,7 @@ const reqData = {
 const state: State = {
   isState:'action',
   actionSelectedList:[],
-  confirmedActions:['Tag customer','Make HTTPS request'],
+  confirmedActions:[],
   selectedAction:'',
   userTagsList:[],
   inActiveAction:[],
@@ -59,6 +59,10 @@ const mutations = <MutationTree<State>>{
 export const actions = <ActionTree<State, any>>{
   pushInActiveAction({commit,state}, item) {
     state.inActiveAction.push(item);
+    commit('setIsState','action')
+  },
+  confirmedActions({commit,state}, item) {
+    commit('setConfirmedActions',item)
     commit('setIsState','action')
   }
 };

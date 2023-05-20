@@ -23,7 +23,6 @@ export default class ActionButton extends Vue {
     return this.$store.state.search.actionSelectedList
   }
   set actionSelectedList(v){
-    console.log(v)
     this.$store.commit('search/setActionSelectedList',v)
   }
 }

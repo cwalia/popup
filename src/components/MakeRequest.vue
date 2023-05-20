@@ -1,10 +1,10 @@
 <template>
-  <div class="action-panel__tag-customer">
+  <div class="action-panel__tag-customer" :style="{'border':isState!='Make HTTPS request' ? '1px solid #E3E5E8' : '1px solid #0052FF'}">
     <div class="action-panel__tag-customer__head">
       <font-awesome-icon icon="shield" class="side-bar-panel__addActions__chevron-left"/>
-      {{isState}}
+      Make HTTPS request
     </div>
-    <div class="action-panel__hr">
+    <div class="action-panel__hr" v-if="checkShow">
       <hr>
       <div class="action-panel__tag-customer__data-list">
         <span>Request endpoint</span>
@@ -51,6 +51,10 @@ export default class MakeRequest extends Vue {
 
   get httpsRequestData(){
     return this.$store.state.search.httpsRequestData
+  }
+
+  get checkShow(){
+    return ['Make HTTPS request','action','add-actions'].includes(this.isState) && this.httpsRequestData.endpoint!=''
   }
 }
 </script>
