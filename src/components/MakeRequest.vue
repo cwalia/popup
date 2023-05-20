@@ -4,7 +4,7 @@
       <font-awesome-icon icon="shield" class="side-bar-panel__addActions__chevron-left"/>
       Make HTTPS request
     </div>
-    <div class="action-panel__hr" v-if="checkShow">
+    <div class="action-panel__hr" v-if="isState == 'Make HTTPS request' ? true : checkShow">
       <hr>
       <div class="action-panel__tag-customer__data-list">
         <span>Request endpoint</span>
@@ -27,7 +27,7 @@
       </div><hr>
       <div class="action-panel__tag-customer__data-list">
         <span>Request body</span>
-        <pre>{{httpsRequestData.res}}</pre>
+        <pre v-if="httpsRequestData.res">{{httpsRequestData.res}}</pre>
       </div>
     </div>
     
@@ -54,7 +54,7 @@ export default class MakeRequest extends Vue {
   }
 
   get checkShow(){
-    return ['Make HTTPS request','action','add-actions'].includes(this.isState) && this.httpsRequestData.endpoint!=''
+    return ['Make HTTPS request','action','add-actions'].includes(this.isState) && this.httpsRequestData.endpoint != ''
   }
 
   get inActiveAction(){

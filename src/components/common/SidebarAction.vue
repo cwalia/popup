@@ -55,8 +55,6 @@
               <font-awesome-icon icon="trash" @click="removeKeyValue(index)"/>
             </div>
           </div>
-
-
         </div>
       </div>
 
@@ -64,7 +62,6 @@
         <span>Request body</span>
         <b-form-textarea rows="5" v-model="httpsRequestData.res" placeholder="Enter endpoint..."></b-form-textarea>
       </div>
-
 
     </div>
   </div>
@@ -118,10 +115,11 @@ export default class SidebarAction extends Vue {
       this.isState == 'Tag customer' ? this.$store.commit('search/setUserTagsList',[]) : this.$store.commit('search/setEndpoint','')
       this.$store.dispatch('search/pushInActiveAction',this.isState)
     }else{
-      const index = this.confirmedActions.indexOf(src);
+      const index = this.confirmedActions.indexOf(this.isState);
       if (index > -1) {
-        this.confirmedActions.splice(index, 1);
+        this.confirmedActions.splice(index, 1)
       }
+      this.$store.commit('search/setIsState','action')
     }
   }
 
