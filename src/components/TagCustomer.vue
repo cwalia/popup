@@ -1,5 +1,5 @@
 <template>
-  <div class="action-panel__tag-customer" :style="{'border':isState!='Tag customer' ? '1px solid #E3E5E8' : '1px solid #0052FF'}">
+  <div class="action-panel__tag-customer" :style="{'border':isState!='Tag customer' ? '1px solid #E3E5E8' : '1px solid #0052FF'}" :class="inActiveAction.includes('Tag customer') ? 'side-bar-panel__inactive-action' : ''">
     <div class="action-panel__tag-customer__head">
       <font-awesome-icon icon="user-tag" class="side-bar-panel__addActions__chevron-left"/>
       Tag customer
@@ -28,6 +28,10 @@ export default class TagCustomer extends Vue {
   }
   get userTagsList(){
     return this.$store.state.search.userTagsList
+  }
+
+  get inActiveAction(){
+    return this.$store.state.search.inActiveAction
   }
 }
 </script>

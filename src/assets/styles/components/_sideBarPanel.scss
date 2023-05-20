@@ -2,6 +2,9 @@
     width: 30%;
     @include mainAppBoxes();
     position: relative;
+    &__inactive-action{
+        color: $ap-text;
+    }
     &__header{
         padding: 22px;
         border-bottom: 1px solid $grey;

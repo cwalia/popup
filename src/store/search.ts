@@ -48,6 +48,13 @@ const mutations = <MutationTree<State>>{
   setActionSelectedList(state,payload:[]){
     state.actionSelectedList=payload
   },
+  setUserTagsList(state,payload:[]){
+    console.log('----')
+    state.userTagsList=payload
+  },
+  setEndpoint(state,payload:string){
+    state.httpsRequestData.endpoint=payload
+  },
   setConfirmedActions(state,payload:[]){
     state.confirmedActions=payload
   },

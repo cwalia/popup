@@ -108,8 +108,21 @@ export default class SidebarAction extends Vue {
   removeTag(index:number){
     this.userTagsList.splice(index, 1)
   }
+
+  get confirmedActions(){
+    return this.$store.state.search.confirmedActions
+  }
+
   getAction(src:string){
-    src == 'Make inactive' ? this.$store.dispatch('search/pushInActiveAction',this.isState) : ''
+    if(src=='Make inactive'){
+      this.isState == 'Tag customer' ? this.$store.commit('search/setUserTagsList',[]) : this.$store.commit('search/setEndpoint','')
+      this.$store.dispatch('search/pushInActiveAction',this.isState)
+    }else{
+      const index = this.confirmedActions.indexOf(src);
+      if (index > -1) {
+        this.confirmedActions.splice(index, 1);
+      }
+    }
   }
 
   optionsMethod = [
