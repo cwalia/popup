@@ -21,3 +21,6 @@ body{
 .mainApp{
   display: flex;
 }
+button:disabled{
+  color: $ap-text;
+}

@@ -33,6 +33,9 @@
             }
         }
     }
+    &__assActions-inactive{
+        font-size: 10px !important;
+    }
     &__assActions{
         color: $head-dGrey;
         padding: 22px;
@@ -56,6 +59,9 @@
             }
         }
         &__sel-buttons{
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
             border: none;
             color: $head-dGrey;
             width: 100%;
@@ -73,6 +79,72 @@
     }
     &__action-area{
         padding: 22px;
+        &__key-value{
+            border-radius: 14px;
+            border: 1px solid $action-cta-border;
+            &__head{
+                display: flex;
+                color: $sub-head-lGrey;
+                border-top: 1px solid $action-cta-border;
+                .key-value{
+                    padding: 14px;
+                    margin-left: 10px;
+                    margin-top: 0px;
+                    border: none;
+                    width: 40%;
+                    padding: 0px !important;
+                    border-right: 1px solid $action-cta-border;
+                    &:focus-visible{
+                        border-right: 1px solid $action-cta-border;
+                    }
+                }
+                div{
+                    padding: 5px 10px;
+                    width: 43%;
+                }
+                .action{
+                    width: 10%;
+                    color: $action-cta;
+                    cursor: pointer;
+                    .svg-inline--fa{
+                        margin-left: 5px;
+                    }
+                    .fa-trash{
+                        color: $icon-grey;
+                    }
+                }
+            }
+
+        }
+        &__req-head{
+            margin-bottom: 20px;
+            span{
+                margin-bottom: 10px;
+                font-weight: 600;
+                color: $head-dGrey;
+            }
+            input{
+                margin-top: 10px;
+                padding: 15px !important;
+                &:focus-visible{
+                    outline: none !important;
+                    border: none;
+                }
+            }
+            .form-control ,.custom-select,select{
+                margin-top: 10px;
+
+                &:focus-visible{
+                    outline: none !important;
+                }
+                border-radius: 14px;
+                &:focus{
+                    box-shadow: none !important;
+                    border-color: #ced4da !important;
+
+                }
+            }
+        }
     }
     &__input-container {
         position: relative;
@@ -103,9 +175,6 @@
             border-radius: 14px;
             padding: 10px 0px 10px 45px;
         }
-    }
-    &__action-area{
-        padding: 20px
     }
     &__tags-list{
         @include flex-center();
@@ -142,5 +211,17 @@
     &__add-actions{
         border-radius: 15px;
         border: 1px solid $action-cta-border;
+        button:first-child {
+            &:hover{
+                border-top-right-radius:14px;
+                border-top-left-radius:14px;
+            }
+        }
+        button:last-child {
+            &:hover{
+                border-bottom-right-radius:14px;
+                border-bottom-left-radius:14px;
+            }
+        }
     }
 }

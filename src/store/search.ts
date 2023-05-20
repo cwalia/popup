@@ -1,12 +1,24 @@
 import {ActionTree, GetterTree, MutationTree} from "vuex";
 import {sample} from "@/api/result";
 
+interface keyValue {
+  key:string,
+  value:string
+}
+interface httpsReq {
+  endpoint:string,
+  method:string,
+  keyValue:keyValue[],
+  res:string
+}
 interface State {
   isState:string,
   actionSelectedList:[],
   confirmedActions:string[],
   selectedAction:string,
-  userTagsList:[]
+  inActiveAction:string[],
+  userTagsList:[],
+  httpsRequestData:[]
 }
 
 const state: State = {
@@ -14,7 +26,9 @@ const state: State = {
   actionSelectedList:[],
   confirmedActions:['Tag customer','Make HTTPS request'],
   selectedAction:'',
-  userTagsList:[]
+  userTagsList:[],
+  inActiveAction:[],
+  httpsRequestData:[]
 }
 
 const mutations = <MutationTree<State>>{
@@ -33,8 +47,9 @@ const mutations = <MutationTree<State>>{
 };
 
 export const actions = <ActionTree<State, any>>{
-  async sample({commit, state},) {
-    const data = await sample()
+  pushInActiveAction({commit,state}, item) {
+    state.inActiveAction.push(item);
+    commit('setIsState','action')
   }
 };
 

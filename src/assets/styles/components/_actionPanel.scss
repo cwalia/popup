@@ -24,6 +24,11 @@
     line-height: 41px;
     color: $ap-text;
   }
+  &__hr{
+    hr{
+      margin: 0px;
+    }
+  }
 
   &__tag-customer{
     border: 1px solid $action-cta;
@@ -32,8 +37,28 @@
     hr{
       margin-top: 0px !important;
     }
+    &__data-list-key{
+      span,p{
+        width: 50%;
+      }
+    }
+    &__data-list{
+      padding: 20px 40px;
+      div{
+        display: flex;
+      }
+      span{
+        color: $sub-head-lGrey;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+      p{
+        margin-bottom: 0px;
+      }
+    }
     &__head{
       padding: 20px;
+      font: $title;
     }
     &__tags-list{
       margin: 20px;

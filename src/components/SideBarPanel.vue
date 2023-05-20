@@ -12,9 +12,15 @@
         Assigned actions
         <div class="side-bar-panel__assActions__sub-head">The selected actions will run in the background when the user journey gets to this element</div>
         <div class="side-bar-panel__add-actions">
-          <button v-for="item in fetchConfirmedActions" :key="item.iconName" class="side-bar-panel__assActions__sel-buttons" @click="stateChange(item.text)">
-            <font-awesome-icon :icon="item.iconName"/>
-            {{item.text}}
+          <button v-for="item in fetchConfirmedActions" :key="item.iconName" class="side-bar-panel__assActions__sel-buttons" @click="stateChange(item.text)" :disabled="inActiveAction.includes(item.text)">
+            <div>
+              <font-awesome-icon :icon="item.iconName"/>
+              {{item.text}}
+            </div>
+            <div v-if="inActiveAction.includes(item.text)" class="side-bar-panel__assActions-inactive">
+              <font-awesome-icon icon="circle"/>
+              Inactive
+            </div>
           </button>
           <button @click="stateChange('add-actions')" class="side-bar-panel__assActions__action-button">
             Add actions
@@ -117,6 +123,9 @@ export default class SideBarPanel extends Vue {
     return this.actionButtonList.filter((item:any) => {
       return this.confirmedActions.includes(item.text);
     });
+  }
+  get inActiveAction(){
+    return this.$store.state.search.inActiveAction
   }
 }
 </script>
