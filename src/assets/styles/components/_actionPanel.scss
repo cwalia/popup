@@ -55,6 +55,13 @@
       p{
         margin-bottom: 0px;
       }
+      pre{
+        white-space: pre-wrap;
+        border-radius: 14px;
+        border: 1px solid $action-cta-border;
+        padding: 10px;
+
+      }
     }
     &__head{
       padding: 20px;

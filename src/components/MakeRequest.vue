@@ -8,25 +8,26 @@
       <hr>
       <div class="action-panel__tag-customer__data-list">
         <span>Request endpoint</span>
-        <p>amamxo</p>
+        <p>{{httpsRequestData.endpoint}}</p>
       </div><hr>
       <div class="action-panel__tag-customer__data-list">
         <span>Request method</span>
-        <p>amamxo</p>
+        <p>{{httpsRequestData.method}}</p>
       </div><hr>
       <div class="action-panel__tag-customer__data-list action-panel__tag-customer__data-list-key">
         <div>
           <span>Key</span>
           <span>Value</span>
         </div>
-        <div>
-          <p>user</p>
-          <p>data</p>
+        <div v-for="(data,index) in httpsRequestData.keyValue" :key="index">
+          <p>{{data.key ? data.key : '---'}}</p>
+          <p>{{data.value ? data.value : '---'}}</p>
+          <hr>
         </div>
       </div><hr>
       <div class="action-panel__tag-customer__data-list">
         <span>Request body</span>
-        <p>amamxo</p>
+        <pre>{{httpsRequestData.res}}</pre>
       </div>
     </div>
     
@@ -47,8 +48,9 @@ export default class MakeRequest extends Vue {
   get isState(){
     return this.$store.state.search.isState
   }
-  get userTagsList(){
-    return this.$store.state.search.userTagsList
+
+  get httpsRequestData(){
+    return this.$store.state.search.httpsRequestData
   }
 }
 </script>

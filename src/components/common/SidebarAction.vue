@@ -20,7 +20,7 @@
       </div>
       <div v-for="(item,index) in userTagsList" :key="index" class="side-bar-panel__tags-list">
         <div>
-        <font-awesome-icon icon="circle" :style="{'color':item.color}"/>
+        <font-awesome-icon icon="circle" :style="{'color' : item.color}"/>
           {{item.text}}
         </div>
         <font-awesome-icon icon="trash" class="side-bar-panel__tags-list__trash" @click="removeTag(index)"/>
@@ -30,12 +30,12 @@
     <div  v-else-if="isState == 'Make HTTPS request'" class="side-bar-panel__action-area">
       <div class="side-bar-panel__action-area__req-head">
         <span>Request endpoint</span>
-        <b-form-input placeholder="Enter endpoint..."></b-form-input>
+        <b-form-input placeholder="Enter endpoint..." v-model="httpsRequestData.endpoint"></b-form-input>
       </div>
 
       <div class="side-bar-panel__action-area__req-head">
         <span>Request method</span>
-        <b-form-select v-model="selectedMethod" :options="optionsMethod" class="mb-3">
+        <b-form-select v-model="httpsRequestData.method" :options="optionsMethod" class="mb-3">
           <template #first >
             <b-form-select-option :value="null" disabled>Choose method...</b-form-select-option>
           </template>
@@ -48,9 +48,9 @@
               <font-awesome-icon icon="plus" @click="addKeyValue()"/>
             </div>
           </div>
-          <div v-for="(item,index) in reqKeyValue" :key="index" class="side-bar-panel__action-area__key-value__head">
+          <div v-for="(item,index) in httpsRequestData.keyValue" :key="index" class="side-bar-panel__action-area__key-value__head">
             <input v-model="item.key" placeholder="enter key..." class="key-value"/>
-            <input v-model="item.vaue" placeholder="enter value..." class="key-value"/>
+            <input v-model="item.value" placeholder="enter value..." class="key-value"/>
             <div class="action">
               <font-awesome-icon icon="trash" @click="removeKeyValue(index)"/>
             </div>
@@ -62,7 +62,7 @@
 
       <div class="side-bar-panel__action-area__req-head">
         <span>Request body</span>
-        <b-form-textarea rows="5" placeholder="Enter endpoint..."></b-form-textarea>
+        <b-form-textarea rows="5" v-model="httpsRequestData.res" placeholder="Enter endpoint..."></b-form-textarea>
       </div>
 
 
@@ -118,15 +118,15 @@ export default class SidebarAction extends Vue {
     { text: 'Delete', value: 'Delete' },
     { text: 'Put', value: 'Put' },
   ]
-  reqKeyValue = [
-    {key:'',value:''},
-    {key:'',value:''},
-  ]
+
   addKeyValue(){
-    this.reqKeyValue.push({key:'',value:''})
+    this.httpsRequestData.keyValue.push({key:'',value:''})
   }
   removeKeyValue(index:number){
-    this.reqKeyValue.splice(index, 1)
+    this.httpsRequestData.keyValue.splice(index, 1)
+  }
+  get httpsRequestData(){
+    return this.$store.state.search.httpsRequestData
   }
 }
 </script>

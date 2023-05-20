@@ -7,10 +7,11 @@ interface keyValue {
 }
 interface httpsReq {
   endpoint:string,
-  method:string,
-  keyValue:keyValue[],
+  method:string | null,
+  keyValue:any[],
   res:string
 }
+
 interface State {
   isState:string,
   actionSelectedList:[],
@@ -18,7 +19,16 @@ interface State {
   selectedAction:string,
   inActiveAction:string[],
   userTagsList:[],
-  httpsRequestData:[]
+  httpsRequestData:httpsReq
+}
+
+const reqData = {
+  endpoint:'',
+  method:null,
+  keyValue:[
+    {key:'',value:''}
+  ],
+  res:''
 }
 
 const state: State = {
@@ -28,7 +38,7 @@ const state: State = {
   selectedAction:'',
   userTagsList:[],
   inActiveAction:[],
-  httpsRequestData:[]
+  httpsRequestData:reqData
 }
 
 const mutations = <MutationTree<State>>{
